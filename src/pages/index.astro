@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+import Card from "../components/Card.astro";
+import {type AstroPod } from '../types/api.ts'
+import PodCast from '../podcast.json';
+const options = {
+  weekday : 'long',
+  day : 'numeric',
+  month: 'short',
+  year: 'numeric'
+}
+const todayInformation = new Date().toLocaleDateString('en-EN', options as Intl.DateTimeFormatOptions);
+const pod = PodCast;
+console.log(pod);
+---
+
+<BaseLayout title="AstroPod" date={todayInformation}>
+  <nav class="wrapper flex justify-between px-5 bg-white py-4 -mt-2 rounded-b-xl shadow-xl">
+    <ul class="flex gap-x-3">
+      <li class="hover:bg-slate-200 font-semibold cursor-pointer px-2.5 py-2 rounded-lg">Home</li>
+      <li class="hover:bg-slate-200 font-semibold cursor-pointer px-2.5 py-2 rounded-lg">About</li>
+    </ul>
+    <a href="#" class="hover:bg-slate-200 font-semibold cursor-pointer px-2.5 py-2 rounded-lg">Ver en Github</a>
+  </nav>
+</BaseLayout>
+
+<section class="flex flex-col mt-10 wrapper relative bottom-0 shadow-lg rounded-xl border overflow-hidden mb-10">
+  {pod.map(item => (
+    <Card
+      source="https://getastropod.netlify.app/cover.jpg"
+      episode={item.Episode}
+      edit={item.date}
+      description="Having a Great conversation about how to explore the world"
+    />
+  ))}
+
+</section>

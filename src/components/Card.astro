@@ -1,0 +1,30 @@
+---
+const { source, episode, description, edit } = Astro.props;
+---
+
+<article class="px-6 py-8 bg-white w-full card border-b-gray-200 border-b">
+  <div class="flex justify-between items-center">
+    <div class="flex gap-x-4 lg:gap-x-10">
+      <figure class="aspect-square h-20">
+        <img class="rounded" src={source} alt="" />
+      </figure>
+      <div>
+        <h2 class="font-bold text-3xl">{episode}</h2>
+        <h3 class="font-semibold text-gray-500 text-md truncate line-clamp-2">{edit}</h3>
+        <p>{description}</p>
+      </div>
+    </div>
+    <div class="rounded-full bg-gray-100 p-3 hover:bg-gray-200">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="#392a62" />
+      </svg>
+    </div>
+  </div>
+</article>
+<style>
+  .card:last-child {
+    border-bottom: none ;
+  }
+
+</style>

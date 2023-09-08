@@ -1,0 +1,39 @@
+---
+const { title, date } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <section class="relative inline-block w-full">
+        <img class="object-cover w-full aspect-[3/1]" src="https://getastropod.netlify.app/banner.webp" alt="">
+        <div class="absolute top-0 left-0 items-center justify-center w-full h-full bg-gradient-to-t from-[#7159b1] to-50% to-transparent">
+          <div class="flex flex-col absolute bottom-5 left-7">
+            <p class="text-white font-bold text-sm md::text-xl capitalize">{date}</p>
+            <h1 class="text-white font-bold text-xl md:text-6xl">{title}</h1>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div>
+      <slot/>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  body {
+    background: rgb(222, 216, 230);
+  }
+  .wrapper {
+    max-inline-size: 1125px;
+    margin: 0 auto;
+  }
+
+</style>
